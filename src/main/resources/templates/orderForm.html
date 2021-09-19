@@ -3,13 +3,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Taco Cloud</title>
-        <link rel="stylesheet" th:href="@{/style.css}">
+        <link rel="stylesheet" th:href="@{/styles.css}" />
     </head>
     <body>
         <form method="POST" th:action="@{/orders}" th:object="${tacoOrder}">
             <h1>Order your taco creations!</h1>
             <img th:src="@{/images/TacoCloud.png}"/>
             <a th:href="@{/design}" id="another">Design another taco</a><br/>
+            
+            
             <h3>Deliver my taco masterpieces to...</h3>
             <label for="deliveryName">Name: </label>
             <input type="text" th:field="*{deliveryName}"/>
