@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Taco Clound</title>
-    <link ref="StyleSheet" th:href="@{/style.css}">
+    <title>Taco Cloud</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
     <h1>Design you taco!</h1>
@@ -45,10 +45,20 @@
                     <span th:text="${ingredient.name}">INGREDIENT</span>
                 </div>
             </div>
+            <span class="validationError"
+                    th:if="${#fields.hasErrors('ingredients')}"
+                    th:errors="*{name}">Name Error</span>
+            <!-- tag::all[] -->
+            <br/>
         </div>
         <div>
             <h3>Name you taco creation:</h3>
             <input type="text" th:field="*{name}"><br>
+            <!-- <span th:text="${#fields.hasErrors('name')}">XXX</span> -->
+            <span class="validationError"
+                    th:if="${#fields.hasErrors('name')}"
+                    th:errors="*{name}">Name Error</span><br>
+            
             <button>Submit Your taco</button>
         </div>
     </form>
