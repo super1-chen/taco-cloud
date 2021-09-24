@@ -32,7 +32,7 @@ public class OrderController {
 
     @GetMapping("/current")
     public String orderForm(Model model) {
-        model.addAttribute("tacoOrder", new TacoOrder());
+        // model.addAttribute("tacoOrder", new TacoOrder());
         return "orderForm";
     }
     @PostMapping
@@ -40,6 +40,7 @@ public class OrderController {
         if (errors.hasErrors()) {
             return "orderForm";
         }
+        log.info("order: " + order);
         orderRepo.save(order);
         sessionStatus.setComplete();
         log.info("Order submitted: " + order);

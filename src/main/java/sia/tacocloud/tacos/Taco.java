@@ -29,7 +29,7 @@ public class Taco {
     // taco can have many Ingredient objects and an Ingredient can be a part of many Taco s.
     @NotNull
     @Size(min = 1, message = "You must choose at least 1 ingredient")
-    @ManyToMany
+    @ManyToMany()
     private List<Ingredient> ingredients = new ArrayList<>();
 
     public void addIngredient(Ingredient ingredient) {
