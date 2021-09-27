@@ -21,6 +21,7 @@ import sia.tacocloud.tacos.Ingredient.Type;
 import sia.tacocloud.tacos.Taco;
 import sia.tacocloud.data.IngredientRepository;
 import sia.tacocloud.tacos.TacoOrder;
+import sia.tacocloud.tacos.TacoUDT;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -65,13 +66,13 @@ public class DesignTacoController {
     @PostMapping
     public String processTaco(@Valid Taco taco, Errors errors, @ModelAttribute TacoOrder tacoOrder, Model model) {
         log.info("taco:" + taco);
-        log.info("taco order" + tacoOrder);
 
         if (errors.hasErrors()) {
+            log.info("errpr: " + errors.getAllErrors());
             return "design";
         }
 
-        tacoOrder.addTaco(taco);
+        tacoOrder.addTaco(new TacoUDT(taco.getName(), taco.getIngredients()));
         log.info("taco order" + tacoOrder);
         return "redirect:/orders/current";
     }

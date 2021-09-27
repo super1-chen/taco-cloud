@@ -1,10 +1,8 @@
 package sia.tacocloud.data;
-
-import java.util.List;
+import java.util.UUID;
 
 import org.springframework.data.repository.CrudRepository;
 import sia.tacocloud.tacos.TacoOrder;
 
-public interface OrderRepository extends CrudRepository<TacoOrder, Long> {
-    List<TacoOrder> findByDeliveryZip(String deliveryZip);
+public interface OrderRepository extends CrudRepository<TacoOrder, UUID> {
 }
