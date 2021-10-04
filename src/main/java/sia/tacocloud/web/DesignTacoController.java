@@ -21,7 +21,6 @@ import sia.tacocloud.tacos.Ingredient.Type;
 import sia.tacocloud.tacos.Taco;
 import sia.tacocloud.data.IngredientRepository;
 import sia.tacocloud.tacos.TacoOrder;
-import sia.tacocloud.tacos.TacoUDT;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -72,7 +71,7 @@ public class DesignTacoController {
             return "design";
         }
 
-        tacoOrder.addTaco(new TacoUDT(taco.getName(), taco.getIngredients()));
+        tacoOrder.addTaco(taco);
         log.info("taco order" + tacoOrder);
         return "redirect:/orders/current";
     }
